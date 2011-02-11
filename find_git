@@ -1,0 +1,3 @@
+#!/bin/bash
+find -not -path "*\.git*" $*
+#find -type f -not -path "*\.svn/*" -not -path "*\.settings/*" -not -name ".classpath" -not -name ".project" -not -name ".gitignore" $*
