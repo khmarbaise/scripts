@@ -1,7 +1,7 @@
 Script Collection
 =================
 
-This is a collection of my bash scripts which will simplify the maintenance of them.
+This is a collection of my bash scripts which will simplify my daily life.
 
 TODOs
 -----
