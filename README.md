@@ -16,4 +16,12 @@ License
 Usage
 -----
 
+Sources
+-------
+The check-classes.sh is stolen from  http://beust.com/weblog/2011/02/21/verifying-the-version-of-your-java-classes/
+
+Links
+-----
+[Java Class File Format](http://www.murrayc.com/learning/java/java_classfileformat.shtml)
+[Java Class File](http://en.wikipedia.org/wiki/Java_class_file)
 
