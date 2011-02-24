@@ -18,7 +18,9 @@ Usage
 
 Sources
 -------
-The check-classes.sh is stolen from  http://beust.com/weblog/2011/02/21/verifying-the-version-of-your-java-classes/
+The check-classes.sh script is taken from http://beust.com/weblog/2011/02/21/verifying-the-version-of-your-java-classes/
+with friendly permission of Cédric Beust.
+
 
 Links
 -----
