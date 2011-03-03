@@ -15,6 +15,10 @@ License
 
 Usage
 -----
+The find_svn and find_svn_target will search for the given files
+in a working copy and filtering out the .svn folders.
+The find_git and find_git_target working the same for git 
+clones.
 
 Sources
 -------
