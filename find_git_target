@@ -1,0 +1,2 @@
+#!/bin/bash
+find_git -and -not -path "*/target*" $*
