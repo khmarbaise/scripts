@@ -1,0 +1,27 @@
+Logging output of Jenkins of a Maven build:
+
+cat log | egrep -a "\[INFO\]\ Uploaded\: " | cut -d"(" -f2 | cut -d" " -f1-2 |  sed -e 's/\ KB/*1024/' | sed -e 's/\ B//' | paste -sd+ | bc -l
+
+Only EAR files: (could be done simpler):
+cat log | egrep -a "\[INFO\]\ Uploaded\: " | grep -v "/maven-metadata\.xml " | grep -v "/.*\.pom " | grep -v "/.*\-sources\.jar " | grep -v "/.*\.jar " | grep -v "/.*\.war " | grep -v "/.*\.tar " | grep -v "/.*\.tar\.gz " | grep -v "/.*\.zip " | cut -d"(" -f2 | cut -d" " -f1-2 |  sed -e 's/\ KB/*1024/' | sed -e 's/\ B//' | paste -sd+ | bc -l
+
+Sort test execution time:
+cat ./2015-01-19_14-34-10/log | egrep -a "^Tests run: [0-9]+, Failures: [0-9]+, Errors: [0-9]+, Skipped: [0-9]+, Time elapsed: " | sort -k 12 -g
+
+
+Number of tests:
+cat 1472/log | egrep -a "^Tests run: [0-9]+, Failures: [0-9]+, Errors: [0-9]+, Skipped: [0-9]+, Time elapsed: " | cut -d" " -f 3| cut -d"," -f1 | paste -sd+ | bc
+
+(Mac: paste -sd+ => paste -sd+ -)
+
+Total of test execution time:
+
+cat 1472/log | egrep -a "^Tests run: [0-9]+, Failures: [0-9]+, Errors: [0-9]+, Skipped: [0-9]+, Time elapsed: " | cut -d":" -f 6 | cut -d" " -f2 | paste -sd+ | bc -l
+
+Extract the maven plugins which are used during a build:
+
+cat mvn.log | egrep "^\[INFO\] --- (.*)\:(.*)\:(.*) " | cut -d" " -f3- | sort
+
+Show number of different maven plugins:
+cat mvn.log | egrep "^\[INFO\] --- (.*)\:(.*)\:(.*) " mvn.log | cut -d" " -f3- | sort | cut -d":" -f1-2 | uniq -c | sort -r
+
