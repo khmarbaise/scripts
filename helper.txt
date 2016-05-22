@@ -2,3 +2,10 @@
 Find and rename a bunch of files:
 
 find . -type f -name "goals.txt" -exec bash -c 'mv $0 ${0:0:${#0}-10}/invoker.properties' {} \;
+
+Change the content of files:
+
+find . -type f -name "invoker.properties" -exec sed -i '' -e 's/^/invoker.goals = /g' \{\} \;
+
+Important: sed -i '' ...
+
