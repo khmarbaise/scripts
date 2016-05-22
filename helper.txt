@@ -1,0 +1,4 @@
+
+Find and rename a bunch of files:
+
+find . -type f -name "goals.txt" -exec bash -c 'mv $0 ${0:0:${#0}-10}/invoker.properties' {} \;
