@@ -6,11 +6,12 @@ Only EAR files: (could be done simpler):
 cat log | egrep -a "\[INFO\]\ Uploaded\: " | grep -v "/maven-metadata\.xml " | grep -v "/.*\.pom " | grep -v "/.*\-sources\.jar " | grep -v "/.*\.jar " | grep -v "/.*\.war " | grep -v "/.*\.tar " | grep -v "/.*\.tar\.gz " | grep -v "/.*\.zip " | cut -d"(" -f2 | cut -d" " -f1-2 |  sed -e 's/\ KB/*1024/' | sed -e 's/\ B//' | paste -sd+ | bc -l
 
 Sort test execution time:
-cat ./2015-01-19_14-34-10/log | egrep -a "^Tests run: [0-9]+, Failures: [0-9]+, Errors: [0-9]+, Skipped: [0-9]+, Time elapsed: " | sort -k 12 -g
+(Based for JUnit Jupiter output):
+cat mvn.log |  egrep -a "\[INFO\] Tests run: [0-9]+, Failures: [0-9]+, Errors: [0-9]+, Skipped: [0-9]+, Time elapsed: " | sort -k 13 -n 
 
 
 Number of tests:
-cat 1472/log | egrep -a "^Tests run: [0-9]+, Failures: [0-9]+, Errors: [0-9]+, Skipped: [0-9]+, Time elapsed: " | cut -d" " -f 3| cut -d"," -f1 | paste -sd+ | bc
+cat mvn.log | egrep -a "\[INFO\] Tests run: [0-9]+, Failures: [0-9]+, Errors: [0-9]+, Skipped: [0-9]+, Time elapsed: " | cut -d" " -f 4| cut -d"," -f1 | paste -s -d+ - | bc -l
 
 (Mac: paste -sd+ => paste -sd+ -)
 
